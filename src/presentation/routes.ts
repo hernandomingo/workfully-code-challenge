@@ -1,19 +1,35 @@
 import { Router } from "express";
-import { DepositRoutes } from "./deposit/routes";
-import { WithdrawRoutes } from "./withdraw/routes";
-import { TransferRoutes } from "./transfer/routes";
+import AccountRepository from "../domain/repositories/account.repository";
+import WithdrawUseCase from "../domain/use-cases/withdraw";
+import seedAccounts from "../seeds/seedAccounts";
+import TransferUseCase from "../domain/use-cases/transfer";
+import DepositUseCase from "../domain/use-cases/deposit";
+import { WithdrawController } from "./withdraw/controller";
+import { DepositController } from "./deposit/controller";
+import { TransferController } from "./transfer/controller";
 
 export class AppRoutes {
   static get routes(): Router {
     const router = Router();
 
+    //Todo: check dependency injection
+    const accountRepository = new AccountRepository();
+    const withdrawUseCase = new WithdrawUseCase(accountRepository);
+    const transferUseCase = new TransferUseCase(accountRepository);
+    const depositUseCase = new DepositUseCase(accountRepository);
+    seedAccounts(accountRepository);
+
+    const depositController = new DepositController(depositUseCase);
+    const withdrawController = new WithdrawController(withdrawUseCase);
+    const transferController = new TransferController(transferUseCase);
+
     router.use("/dummy", (request, response) => {
       response.send("something!");
     });
 
-    router.use("/api/deposit", DepositRoutes.routes);
-    router.use("/api/withdraw", WithdrawRoutes.routes);
-    router.use("/api/transfer", TransferRoutes.routes);
+    router.use("/api/deposit", depositController.postDeposit);
+    router.use("/api/withdraw", withdrawController.postWithdraw);
+    router.use("/api/transfer", transferController.postTransfer);
 
     return router;
   }
