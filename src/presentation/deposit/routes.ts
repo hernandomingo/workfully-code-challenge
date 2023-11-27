@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { DepositController } from "./controller";
-import DepositUseCase from "../../domain/use-cases/depositUseCase";
+import DepositUseCase from "../../domain/use-cases/deposit";
 import AccountRepository from "../../domain/repositories/account.repository";
 import seedAccounts from "../../seeds/seedAccounts";
 

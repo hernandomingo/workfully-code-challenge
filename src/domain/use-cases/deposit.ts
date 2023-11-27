@@ -8,14 +8,16 @@ class DepositUseCase {
     const dailyDepositLimit =
       this.accountRepository.getDailyDepositLimit(accountId);
 
+    const dailyDepositAmount = dailyDepositLimit?.totalDeposits ?? 0 + amount;
+
     // Validate deposit amount
-    if (dailyDepositLimit?.totalDeposits ?? 0 + amount > 5000) {
+    if (dailyDepositAmount > 5000) {
       throw new Error("Daily deposit limit exceeded");
     }
 
     // Update daily deposit limit
     if (dailyDepositLimit) {
-      dailyDepositLimit.totalDeposits += amount;
+      dailyDepositLimit.totalDeposits = dailyDepositAmount;
       this.accountRepository.updateDailyDepositLimit(
         accountId,
         dailyDepositLimit

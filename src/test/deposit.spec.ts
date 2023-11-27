@@ -1,7 +1,7 @@
 import supertest from "supertest";
 import express from "express";
 import AccountRepository from "../domain/repositories/account.repository";
-import DepositUseCase from "../domain/use-cases/depositUseCase";
+import DepositUseCase from "../domain/use-cases/deposit";
 import seedAccounts from "../seeds/seedAccounts";
 import { DepositController } from "../presentation/deposit/controller";
 
