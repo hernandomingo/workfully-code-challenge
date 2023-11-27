@@ -6,7 +6,7 @@ describe('Dummy Test', () => {
         expect(true).toBe(true);
     });
     it('should respond 200', async () => {
-        const response = await request(app.express).get("/dummy");
+        const response = await request(app.app).get("/dummy");
         expect(response.status).toBe(200);
     });
 });
