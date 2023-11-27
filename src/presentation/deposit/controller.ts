@@ -1,9 +1,18 @@
 import { Request, Response } from "express";
+import { DepositDTO } from "../../domain/dtos/deposit.dto";
+import DepositUseCase from "../../domain/use-cases/depositUseCase";
 
 export class DepositController {
-  constructor() {}
+  constructor(private depositUseCase: DepositUseCase) {}
 
   postDeposit = (req: Request, res: Response) => {
-    res.json("post depsoit");
+    const { accountId, amount } = req.body as DepositDTO;
+
+    try {
+      const balance = this.depositUseCase.execute(accountId, amount);
+      res.json({ message: "Deposit successful", balance });
+    } catch (error) {
+      res.status(400).json({ error: "Error" });
+    }
   };
 }
