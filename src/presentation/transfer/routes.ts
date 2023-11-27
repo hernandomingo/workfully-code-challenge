@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { TransferController } from "./controller";
-import TransferUseCase from "../../domain/use-cases/tansfer";
+import TransferUseCase from "../../domain/use-cases/transfer";
 import AccountRepository from "../../domain/repositories/account.repository";
 import seedAccounts from "../../seeds/seedAccounts";
 

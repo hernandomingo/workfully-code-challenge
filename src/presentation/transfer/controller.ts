@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import TransferUseCase from "../../domain/use-cases/tansfer";
+import TransferUseCase from "../../domain/use-cases/transfer";
 import { TransferDTO } from "../../domain/dtos/transfer.dto";
 
 export class TransferController {
