@@ -1,6 +1,6 @@
 import AccountRepository from "../repositories/account.repository";
 
-class WithdrawUseCase {
+class WithdrawService {
   constructor(private accountRepository: AccountRepository) {}
 
   async execute(accountId: number, amount: number): Promise<number> {
@@ -21,4 +21,4 @@ class WithdrawUseCase {
   }
 }
 
-export default WithdrawUseCase;
+export default WithdrawService;

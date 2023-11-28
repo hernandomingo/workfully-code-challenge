@@ -1,8 +1,8 @@
 import { Router } from "express";
 import AccountRepository from "../repositories/account.repository";
-import WithdrawUseCase from "../services/withdraw";
-import TransferUseCase from "../services/transfer";
-import DepositUseCase from "../services/deposit";
+import WithdrawService from "../services/withdraw";
+import TransferService from "../services/transfer";
+import DepositService from "../services/deposit";
 import { DepositController } from "../controllers/deposit";
 import { WithdrawController } from "../controllers/withdraw";
 import { TransferController } from "../controllers/transfer";
@@ -16,9 +16,9 @@ export class AppRoutes {
     const accountRepository = new AccountRepository();
     const transactionRepository = new TransactionRepository();
 
-    const withdrawUseCase = new WithdrawUseCase(accountRepository);
-    const transferUseCase = new TransferUseCase(accountRepository);
-    const depositUseCase = new DepositUseCase(
+    const withdrawUseCase = new WithdrawService(accountRepository);
+    const transferUseCase = new TransferService(accountRepository);
+    const depositUseCase = new DepositService(
       accountRepository,
       transactionRepository
     );

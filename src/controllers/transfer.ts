@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import TransferUseCase from "../services/transfer";
+import TransferService from "../services/transfer";
 import { TransferDTO } from "../models/dtos/transfer.dto";
 
 export class TransferController {
-  constructor(private transferUseCase: TransferUseCase) {}
+  constructor(private transferUseCase: TransferService) {}
 
   postTransfer = async (req: Request, res: Response) => {
     const { fromAccountId, toAccountId, amount } = req.body as TransferDTO;

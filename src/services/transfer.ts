@@ -1,6 +1,6 @@
 import AccountRepository from "../repositories/account.repository";
 
-class TransferUseCase {
+class TransferService {
   constructor(private accountRepository: AccountRepository) {}
 
   async execute(
@@ -28,4 +28,4 @@ class TransferUseCase {
   }
 }
 
-export default TransferUseCase;
+export default TransferService;

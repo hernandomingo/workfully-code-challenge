@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import WithdrawUseCase from "../services/withdraw";
+import WithdrawService from "../services/withdraw";
 import { WithdrawDTO } from "../models/dtos/withdraw.dto";
 
 export class WithdrawController {
-  constructor(private withdrawUseCase: WithdrawUseCase) {}
+  constructor(private withdrawUseCase: WithdrawService) {}
 
   postWithdraw = async (req: Request, res: Response) => {
     const { accountId, amount } = req.body as WithdrawDTO;

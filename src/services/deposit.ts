@@ -1,7 +1,7 @@
 import AccountRepository from "../repositories/account.repository";
 import TransactionRepository from "../repositories/transaction.repository";
 
-class DepositUseCase {
+class DepositService {
   constructor(
     private accountRepository: AccountRepository,
     private transactionRepository: TransactionRepository
@@ -33,4 +33,4 @@ class DepositUseCase {
   }
 }
 
-export default DepositUseCase;
+export default DepositService;
