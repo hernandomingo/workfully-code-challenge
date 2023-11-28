@@ -31,6 +31,8 @@ npm test
 
 # Bank Account API
 
+Postman collection: `challenge.postman_collection.json`
+
 ### Deposit
 
 `/api/deposit` -> **accountId** and **amount** as parameters 
