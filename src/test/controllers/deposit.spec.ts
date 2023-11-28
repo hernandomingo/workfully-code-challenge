@@ -1,10 +1,10 @@
 import supertest from "supertest";
 import express from "express";
-import AccountRepository from "../repositories/account.repository";
-import DepositUseCase from "../services/deposit";
-import seedAccounts from "../seeds/seedAccounts";
-import { DepositController } from "../controllers/deposit";
-import TransactionRepository from "../repositories/transaction.repository";
+import AccountRepository from "../../repositories/account.repository";
+import DepositUseCase from "../../services/deposit";
+import seedAccounts from "../../seeds/seedAccounts";
+import { DepositController } from "../../controllers/deposit";
+import TransactionRepository from "../../repositories/transaction.repository";
 
 describe("DepositController", () => {
   const app = express();

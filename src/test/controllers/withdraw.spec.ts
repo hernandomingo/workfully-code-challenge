@@ -1,9 +1,9 @@
 import supertest from "supertest";
 import express from "express";
-import AccountRepository from "../repositories/account.repository";
-import WithdrawUseCase from "../services/withdraw";
-import seedAccounts from "../seeds/seedAccounts";
-import { WithdrawController } from "../controllers/withdraw";
+import AccountRepository from "../../repositories/account.repository";
+import WithdrawUseCase from "../../services/withdraw";
+import seedAccounts from "../../seeds/seedAccounts";
+import { WithdrawController } from "../../controllers/withdraw";
 
 describe("DepositController", () => {
   const app = express();

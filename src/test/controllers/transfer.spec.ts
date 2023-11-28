@@ -1,9 +1,9 @@
 import supertest from "supertest";
 import express from "express";
-import AccountRepository from "../repositories/account.repository";
-import TransferUseCase from "../services/transfer";
-import seedAccounts from "../seeds/seedAccounts";
-import { TransferController } from "../controllers/transfer";
+import AccountRepository from "../../repositories/account.repository";
+import TransferUseCase from "../../services/transfer";
+import seedAccounts from "../../seeds/seedAccounts";
+import { TransferController } from "../../controllers/transfer";
 
 describe("DepositController", () => {
   const app = express();
