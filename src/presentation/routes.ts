@@ -1,11 +1,10 @@
 import { Router } from "express";
 import AccountRepository from "../domain/repositories/account.repository";
 import WithdrawUseCase from "../domain/use-cases/withdraw";
-import seedAccounts from "../seeds/seedAccounts";
 import TransferUseCase from "../domain/use-cases/transfer";
 import DepositUseCase from "../domain/use-cases/deposit";
-import { WithdrawController } from "./withdraw/controller";
 import { DepositController } from "./deposit/controller";
+import { WithdrawController } from "./withdraw/controller";
 import { TransferController } from "./transfer/controller";
 
 export class AppRoutes {
@@ -14,10 +13,10 @@ export class AppRoutes {
 
     //Todo: check dependency injection
     const accountRepository = new AccountRepository();
+
     const withdrawUseCase = new WithdrawUseCase(accountRepository);
     const transferUseCase = new TransferUseCase(accountRepository);
     const depositUseCase = new DepositUseCase(accountRepository);
-    seedAccounts(accountRepository);
 
     const depositController = new DepositController(depositUseCase);
     const withdrawController = new WithdrawController(withdrawUseCase);

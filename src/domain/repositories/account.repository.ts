@@ -1,4 +1,5 @@
 import Account from "../entities/account";
+import { AccountModel } from "../../models/account";
 
 interface DailyDepositLimit {
   date: string;
@@ -6,15 +7,21 @@ interface DailyDepositLimit {
 }
 
 class AccountRepository {
-  private accounts: Record<string, Account> = {};
   private dailyDepositLimits: Record<string, DailyDepositLimit> = {};
 
-  find(accountId: string): Account | undefined {
-    return this.accounts[accountId];
+  find(accountId: string): Promise<Account | null> {
+    return AccountModel.findOne({ where: { id: accountId } });
   }
 
-  update(account: Account): void {
-    this.accounts[account.id] = account;
+  update(account: Account) {
+    return AccountModel.update(
+      { balance: account.balance },
+      {
+        where: {
+          id: account.id,
+        },
+      }
+    );
   }
 
   getDailyDepositLimit(accountId: string): DailyDepositLimit | undefined {
