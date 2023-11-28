@@ -4,8 +4,8 @@ class TransferUseCase {
   constructor(private accountRepository: AccountRepository) {}
 
   async execute(
-    fromAccountId: string,
-    toAccountId: string,
+    fromAccountId: number,
+    toAccountId: number,
     amount: number
   ): Promise<number> {
     const fromAccount = await this.accountRepository.find(fromAccountId);

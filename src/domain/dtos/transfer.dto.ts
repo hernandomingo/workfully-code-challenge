@@ -1,7 +1,7 @@
 export class TransferDTO {
   constructor(
-    public fromAccountId: string,
-    public toAccountId: string,
+    public fromAccountId: number,
+    public toAccountId: number,
     public amount: number
   ) {}
 }

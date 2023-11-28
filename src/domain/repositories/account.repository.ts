@@ -9,7 +9,7 @@ interface DailyDepositLimit {
 class AccountRepository {
   private dailyDepositLimits: Record<string, DailyDepositLimit> = {};
 
-  find(accountId: string): Promise<Account | null> {
+  find(accountId: number): Promise<Account | null> {
     return AccountModel.findOne({ where: { id: accountId } });
   }
 
@@ -24,12 +24,12 @@ class AccountRepository {
     );
   }
 
-  getDailyDepositLimit(accountId: string): DailyDepositLimit | undefined {
+  getDailyDepositLimit(accountId: number): DailyDepositLimit | undefined {
     return this.dailyDepositLimits[accountId];
   }
 
   updateDailyDepositLimit(
-    accountId: string,
+    accountId: number,
     dailyDepositLimit: DailyDepositLimit
   ): void {
     this.dailyDepositLimits[accountId] = dailyDepositLimit;

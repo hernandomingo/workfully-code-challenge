@@ -1,3 +1,3 @@
 export class DepositDTO {
-  constructor(public accountId: string, public amount: number) {}
+  constructor(public accountId: number, public amount: number) {}
 }

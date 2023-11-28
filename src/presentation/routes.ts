@@ -6,6 +6,7 @@ import DepositUseCase from "../domain/use-cases/deposit";
 import { DepositController } from "./deposit/controller";
 import { WithdrawController } from "./withdraw/controller";
 import { TransferController } from "./transfer/controller";
+import TransactionRepository from "../domain/repositories/transaction.repository";
 
 export class AppRoutes {
   static get routes(): Router {
@@ -13,10 +14,14 @@ export class AppRoutes {
 
     //Todo: check dependency injection
     const accountRepository = new AccountRepository();
+    const transactionRepository = new TransactionRepository();
 
     const withdrawUseCase = new WithdrawUseCase(accountRepository);
     const transferUseCase = new TransferUseCase(accountRepository);
-    const depositUseCase = new DepositUseCase(accountRepository);
+    const depositUseCase = new DepositUseCase(
+      accountRepository,
+      transactionRepository
+    );
 
     const depositController = new DepositController(depositUseCase);
     const withdrawController = new WithdrawController(withdrawUseCase);

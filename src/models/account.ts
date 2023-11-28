@@ -11,15 +11,14 @@ export class AccountModel extends Model<
   InferAttributes<AccountModel>,
   InferCreationAttributes<AccountModel>
 > {
-  declare id: string;
-
+  declare id: number;
   declare balance: number;
 }
 
 AccountModel.init(
   {
     id: {
-      type: DataTypes.UUID,
+      type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
     },
@@ -35,3 +34,7 @@ AccountModel.init(
     timestamps: false,
   }
 );
+
+AccountModel.sync().then(() => {
+  console.log("Account Model synced");
+});

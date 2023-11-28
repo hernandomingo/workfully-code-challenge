@@ -4,11 +4,17 @@ import AccountRepository from "../domain/repositories/account.repository";
 import DepositUseCase from "../domain/use-cases/deposit";
 import seedAccounts from "../seeds/seedAccounts";
 import { DepositController } from "../presentation/deposit/controller";
+import TransactionRepository from "../domain/repositories/transaction.repository";
 
 describe("DepositController", () => {
   const app = express();
   const accountRepository = new AccountRepository();
-  const depositUseCase = new DepositUseCase(accountRepository);
+  const transactionRepository = new TransactionRepository();
+
+  const depositUseCase = new DepositUseCase(
+    accountRepository,
+    transactionRepository
+  );
   const depositController = new DepositController(depositUseCase);
   seedAccounts(accountRepository);
 

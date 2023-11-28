@@ -3,7 +3,7 @@ import AccountRepository from "../repositories/account.repository";
 class WithdrawUseCase {
   constructor(private accountRepository: AccountRepository) {}
 
-  async execute(accountId: string, amount: number): Promise<number> {
+  async execute(accountId: number, amount: number): Promise<number> {
     const account = await this.accountRepository.find(accountId);
 
     // Validate withdraw amount

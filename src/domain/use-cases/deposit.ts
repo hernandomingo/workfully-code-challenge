@@ -1,27 +1,26 @@
 import AccountRepository from "../repositories/account.repository";
+import TransactionRepository from "../repositories/transaction.repository";
 
 class DepositUseCase {
-  constructor(private accountRepository: AccountRepository) {}
+  constructor(
+    private accountRepository: AccountRepository,
+    private transactionRepository: TransactionRepository
+  ) {}
 
-  async execute(accountId: string, amount: number): Promise<number> {
+  async execute(accountId: number, amount: number): Promise<number> {
     const account = await this.accountRepository.find(accountId);
-    const dailyDepositLimit =
-      this.accountRepository.getDailyDepositLimit(accountId);
-
-    const dailyDepositAmount = dailyDepositLimit?.totalDeposits ?? 0 + amount;
+    const todaysDeposits = await this.transactionRepository.findTodaysDeposits(
+      accountId
+    );
 
     // Validate deposit amount
-    if (dailyDepositAmount > 5000) {
+    if ((todaysDeposits ?? 0) + amount > 5000) {
       throw new Error("Daily deposit limit exceeded");
     }
 
-    // Update daily deposit limit
-    if (dailyDepositLimit) {
-      dailyDepositLimit.totalDeposits = dailyDepositAmount;
-      this.accountRepository.updateDailyDepositLimit(
-        accountId,
-        dailyDepositLimit
-      );
+    // Create deposit transaction
+    if (account) {
+      await this.transactionRepository.create(account.id, amount, "deposit");
     }
 
     // Update account balance
