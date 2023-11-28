@@ -34,7 +34,3 @@ AccountModel.init(
     timestamps: false,
   }
 );
-
-AccountModel.sync().then(() => {
-  console.log("Account Model synced");
-});

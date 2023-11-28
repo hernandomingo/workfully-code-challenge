@@ -43,7 +43,3 @@ TransactionModel.init(
     timestamps: false,
   }
 );
-
-TransactionModel.sync().then(() => {
-  console.log("Transaction Model synced");
-});
