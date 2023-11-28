@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import TransferUseCase from "../../domain/use-cases/transfer";
-import { TransferDTO } from "../../domain/dtos/transfer.dto";
+import TransferUseCase from "../services/transfer";
+import { TransferDTO } from "../models/dtos/transfer.dto";
 
 export class TransferController {
   constructor(private transferUseCase: TransferUseCase) {}

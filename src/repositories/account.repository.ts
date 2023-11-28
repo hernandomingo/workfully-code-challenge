@@ -1,5 +1,5 @@
-import Account from "../entities/account";
-import { AccountModel } from "../../models/account";
+import Account from "../models/entities/account";
+import { AccountModel } from "../models/account";
 
 interface DailyDepositLimit {
   date: string;

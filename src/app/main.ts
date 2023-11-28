@@ -1,6 +1,6 @@
 import * as Process from "process";
-import { AppRoutes } from "../presentation/routes";
-import { Server } from "../presentation/server";
+import { AppRoutes } from "../api/routes";
+import { Server } from "../api/server";
 import Config from "../config/startup";
 
 Config.startup();

@@ -1,12 +1,12 @@
 import { Router } from "express";
-import AccountRepository from "../domain/repositories/account.repository";
-import WithdrawUseCase from "../domain/use-cases/withdraw";
-import TransferUseCase from "../domain/use-cases/transfer";
-import DepositUseCase from "../domain/use-cases/deposit";
-import { DepositController } from "./deposit/controller";
-import { WithdrawController } from "./withdraw/controller";
-import { TransferController } from "./transfer/controller";
-import TransactionRepository from "../domain/repositories/transaction.repository";
+import AccountRepository from "../repositories/account.repository";
+import WithdrawUseCase from "../services/withdraw";
+import TransferUseCase from "../services/transfer";
+import DepositUseCase from "../services/deposit";
+import { DepositController } from "../controllers/deposit";
+import { WithdrawController } from "../controllers/withdraw";
+import { TransferController } from "../controllers/transfer";
+import TransactionRepository from "../repositories/transaction.repository";
 
 export class AppRoutes {
   static get routes(): Router {

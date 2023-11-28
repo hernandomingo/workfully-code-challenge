@@ -1,5 +1,5 @@
-import Account from "../domain/entities/account";
-import AccountRepository from "../domain/repositories/account.repository";
+import Account from "../models/entities/account";
+import AccountRepository from "../repositories/account.repository";
 
 const seedAccounts = (accountRepository: AccountRepository): void => {
   const initialAccounts: Account[] = [

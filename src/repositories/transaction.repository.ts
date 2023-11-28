@@ -1,5 +1,5 @@
-import Transaction from "../entities/transaction";
-import { TransactionModel } from "../../models/transaction";
+import Transaction from "../models/entities/transaction";
+import { TransactionModel } from "../models/transaction";
 
 class TransactionRepository {
   create(accountId: number, amount: number, transactionType: string) {

@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import WithdrawUseCase from "../../domain/use-cases/withdraw";
-import { WithdrawDTO } from "../../domain/dtos/withdraw.dto";
+import WithdrawUseCase from "../services/withdraw";
+import { WithdrawDTO } from "../models/dtos/withdraw.dto";
 
 export class WithdrawController {
   constructor(private withdrawUseCase: WithdrawUseCase) {}

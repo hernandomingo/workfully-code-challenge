@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { DepositDTO } from "../../domain/dtos/deposit.dto";
-import DepositUseCase from "../../domain/use-cases/deposit";
+import { DepositDTO } from "../models/dtos/deposit.dto";
+import DepositUseCase from "../services/deposit";
 
 export class DepositController {
   constructor(private depositUseCase: DepositUseCase) {}
