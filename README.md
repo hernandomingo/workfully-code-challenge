@@ -11,7 +11,12 @@ npm install
 docker-compose up -d
 ```
 
-3. Run project
+3. Build project
+```bash
+npm run build
+```
+
+4. Run project
 ```bash
 npm start
 ```
