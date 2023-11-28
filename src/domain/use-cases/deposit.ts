@@ -3,8 +3,8 @@ import AccountRepository from "../repositories/account.repository";
 class DepositUseCase {
   constructor(private accountRepository: AccountRepository) {}
 
-  execute(accountId: string, amount: number): number {
-    const account = this.accountRepository.find(accountId);
+  async execute(accountId: string, amount: number): Promise<number> {
+    const account = await this.accountRepository.find(accountId);
     const dailyDepositLimit =
       this.accountRepository.getDailyDepositLimit(accountId);
 
@@ -27,7 +27,7 @@ class DepositUseCase {
     // Update account balance
     if (account) {
       account.balance += amount;
-      this.accountRepository.update(account);
+      await this.accountRepository.update(account);
     }
 
     return account?.balance || 0;

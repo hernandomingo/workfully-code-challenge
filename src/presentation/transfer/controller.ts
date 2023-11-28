@@ -5,11 +5,11 @@ import { TransferDTO } from "../../domain/dtos/transfer.dto";
 export class TransferController {
   constructor(private transferUseCase: TransferUseCase) {}
 
-  postTransfer = (req: Request, res: Response) => {
+  postTransfer = async (req: Request, res: Response) => {
     const { fromAccountId, toAccountId, amount } = req.body as TransferDTO;
 
     try {
-      const balance = this.transferUseCase.execute(
+      const balance = await this.transferUseCase.execute(
         fromAccountId,
         toAccountId,
         amount
